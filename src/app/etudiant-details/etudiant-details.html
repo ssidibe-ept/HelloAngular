@@ -1,1 +1,27 @@
-<p>etudiant-details works!</p>
+
+<div>
+  {{etudiant | json}} <!-- affiche l'objet json-->
+</div>
+
+
+<!-- main header footer section se comportent comme div-->
+<!-- p->padding m->margin p-x m-x groite et gauche  p-start p-end  m-top m-bottom-->
+<main class="px-4">
+  <div class="border border-primary rounded-2">
+    <div class="bg-primary text-light m-2 p-2 h3">Détails étudiant</div>
+    <div class="container-fluid bg-danger p-2">
+      <div class="row"><!--row est divisé en 12 colonnes-->
+        <div class="col-12 col-lg-4 bg-secondary text-light h2">
+          <div class="rounded-circle bg-danger" style="width: 100px; height: 100px">image</div>
+        </div>
+        <div class="col-12 col-lg-8 bg-warning" [hidden]="etudiant.inscrit">
+          Id : {{etudiant.id}}<br/>
+          Prenom : {{etudiant.prenom}}<br/>
+          Nom : {{etudiant.nom}}<br/>
+          tel : {{etudiant.tel}}<br/>
+          Prenom : {{etudiant.adresse}}<br/>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
