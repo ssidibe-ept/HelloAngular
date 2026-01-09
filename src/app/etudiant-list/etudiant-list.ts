@@ -20,18 +20,38 @@ import {EtudiantsService} from '../services/etudiants-service';
 })
 export class EtudiantList implements OnInit{
   etudiants:Etudiant[]=[];
+  loading=false;
 
   constructor(private etudiantService:EtudiantsService) {
   }
 
   ngOnInit(): void {
     //chargement des etudiants
-    this.loadEtudiants();
+    //this.loadAllEtudiants();
+    this.laodEtudiants();
   }
 
-  loadEtudiants(): void {
-    console.log('chargement des etudiants')
+  laodEtudiants(){
+    this.loading=true;
+    this.etudiants=[];
     this.etudiantService.getEtudiants().subscribe({
+      next:(e:Etudiant)=>{
+        console.log('etudiant recu ', e)
+        this.etudiants.push(e);
+      },
+      complete:()=>{
+        console.log('fin chargement avec getEtudiant')
+        this.loading=false;
+      },
+      error:(err)=>{
+        this.loading=false;
+      }
+    })
+  }
+
+  loadAllEtudiants(): void {
+    console.log('chargement des etudiants')
+    this.etudiantService.getAllEtudiants().subscribe({
       next:(result)=>{
         console.log('etudants recus',result);
         this.etudiants=result;

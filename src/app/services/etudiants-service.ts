@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {concatMap, delay, from, Observable, of} from 'rxjs';
 import {Etudiant} from '../models';
 import {ETUDAINTS_LIST} from '../data';
 
@@ -8,8 +8,15 @@ import {ETUDAINTS_LIST} from '../data';
 })
 export class EtudiantsService {
 
-  getEtudiants():Observable<Etudiant[]>{
-    const etudians=ETUDAINTS_LIST;
-    return of(etudians);
+  getEtudiants():Observable<Etudiant>{
+    const etudiants=ETUDAINTS_LIST;
+    return from(etudiants).pipe(
+      concatMap(value => of(value).pipe(delay(5000)))
+    );
+  }
+
+  getAllEtudiants():Observable<Etudiant[]>{
+    const etudiants=ETUDAINTS_LIST;
+    return of(etudiants);
   }
 }
