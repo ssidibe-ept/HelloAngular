@@ -27,8 +27,8 @@ export class EtudiantList implements OnInit{
 
   ngOnInit(): void {
     //chargement des etudiants
-    //this.loadAllEtudiants();
-    this.laodEtudiants();
+    this.loadAllEtudiants();
+    //this.laodEtudiants();
   }
 
   laodEtudiants(){
