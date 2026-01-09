@@ -1,1 +1,11 @@
-<p>etudiant-list works!</p>
+<app-entete></app-entete>
+<main >
+
+  <div class="titrePage">Liste des etudiants</div>
+
+  <!--div class="border p-2 my-2 " *ngFor="let e of etudiants; index as i; even as paire; odd as impaire; first as isFirst; last as isLast"-->
+  @for (e of etudiants;track $index){
+    <app-etudiant-item [etudiant]="e" [showDetails]="true"></app-etudiant-item>
+  }
+
+</main>

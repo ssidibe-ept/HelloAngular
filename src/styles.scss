@@ -10,3 +10,20 @@ $theme-colors: (
 );*/
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.titrePage{
+  @extend .text-primary;
+  @extend .border-bottom;
+  @extend .border-primary;
+  @extend .p-2;
+  @extend .m-2;
+  @extend .h2;
+}
+main{
+  @extend .p-2;
+  @extend .m-2;
+}
+
+.eptWarningBg{
+  background-color: rgb(255, 240, 240);
+}

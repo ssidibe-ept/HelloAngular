@@ -1,0 +1,50 @@
+<app-entete></app-entete>
+valide {{etudiantForm.valid}}<br/>
+invalide {{etudiantForm.invalid}}<br/>
+touched {{etudiantForm.touched}}<br/>
+untouched {{etudiantForm.untouched}}<br/>
+pristine {{etudiantForm.pristine}}<br/>
+dirty {{etudiantForm.dirty}}<br/>
+
+<main class="border">
+  <div class="titrePage">Ajout etududiant</div>
+  <form [formGroup]="etudiantForm">
+    <div class="form-floating mb-3">
+      <input
+        [class.is-valid]="etudiantForm.get('prenom')?.valid"
+        [class.is-invalid]="etudiantForm.get('prenom')?.touched && etudiantForm.get('prenom')?.invalid"
+        formControlName="prenom" type="text" class="form-control" id="prenomInput" placeholder="name@example.com">
+      <label for="prenomInput">Prénom</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="nomInput" placeholder="name@example.com">
+      <label for="nomInput">Nom</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="telInput" placeholder="name@example.com">
+      <label for="telInput">Téléphone</label>
+    </div>
+
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="inscritCheckDefault">
+      <label class="form-check-label" for="inscritCheckDefault">Inscrit</label>
+    </div>
+
+    <div class="form-floating">
+      <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+        <option value="">Choisir votre binome</option>
+        @for(e of etudiants; track e.id){
+          <option [value]="e.id">{{e.prenom}} {{e.nom}}</option>
+        }
+      </select>
+      <label for="floatingSelect">Binome</label>
+    </div>
+
+    <div class="text-end mt-2">
+      <button type="button" class="btn btn-outline-danger me-2">Annuler</button>
+      <button type="button" [disabled]="etudiantForm.invalid" class="btn btn-primary" >Enregistrer</button>
+    </div>
+  </form>
+</main>

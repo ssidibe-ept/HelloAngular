@@ -1,0 +1,27 @@
+<div class="border p-2 my-2 rounded-2"
+     [class.border-success]="etudiant.inscrit"
+     [class.border-danger]="!etudiant.inscrit"
+     [class.eptWarningBg]="!etudiant.inscrit">
+  <div class="text-primary" [style]="titleStyles">
+       <!--[style.background-color]="getFontColor()"
+       [style.font-size]="titleSize"
+       [style.font-weight]="titleWeight"-->
+    {{etudiant.prenom}} {{etudiant.nom}}
+  </div>
+  <div [style]="fieldStyles">
+    @if (showDetails){
+      <span class="fw-bold">ID :</span>
+      <span class="fw-bold">{{etudiant.id}}</span><br>
+    }
+    <span class="fw-bold">Tel :</span>
+    <span class="fw-bold">{{etudiant.tel}}</span><br>
+    <span class="fw-bold">Adresse :</span>
+    <span class="fw-bold">{{etudiant.adresse}}</span><br>
+    @if (showDetails){
+      <span class="fw-bold">Inscrit :</span>
+      <span class="fw-bold">{{etudiant.inscrit}}</span><br>
+      <span class="fw-bold">photos :</span>
+      <span class="fw-bold">{{etudiant.photos}}</span><br>
+    }
+  </div>
+</div>
